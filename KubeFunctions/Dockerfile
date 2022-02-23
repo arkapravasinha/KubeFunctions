@@ -7,7 +7,7 @@ COPY . /src/dotnet-function-app
 RUN cd /src/dotnet-function-app && \
     mkdir -p /home/site/wwwroot && \
     ls -ltr && \
-    dotnet publish Kubefunctions/KubeFunctions.csproj --output /home/site/wwwroot
+    dotnet publish KubeFunctions.sln --output /home/site/wwwroot
 
 # To enable ssh & remote debugging on app service change the base image to the one below
 # FROM mcr.microsoft.com/azure-functions/dotnet:4-appservice
