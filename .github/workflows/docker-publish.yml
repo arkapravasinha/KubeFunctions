@@ -37,6 +37,14 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
+      - name: Extract tag name
+        id: tag
+        uses: actions/github-script@0.2.0
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            return context.payload.ref.replace(/\/refs\/tags\//, '');
+
 
       # Workaround: https://github.com/docker/build-push-action/issues/461
       - name: Setup Docker buildx
@@ -68,6 +76,8 @@ jobs:
         with:
           context: .
           push: ${{ github.event_name != 'pull_request' }}
-          tags: ghcr.io/${{ github.repository_owner }}/kubefunctions:latest
+          tags: |
+            ghcr.io/${{ github.repository_owner }}/kubefunctions:latest
+            ghcr.io/${{ github.repository_owner }}/kubefunctions:${{ steps.tag.outputs.result }}
           labels: ${{ steps.meta.outputs.labels }}
           file: ./KubeFunctions/Dockerfile
