@@ -27,7 +27,7 @@ jobs:
 
     runs-on: ubuntu-latest
     permissions:
-      contents: read
+      contents: write
       packages: write
       # This is used to complete the identity challenge
       # with sigstore/fulcio when running outside of PRs.
@@ -36,9 +36,6 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
-        with:
-            persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal access token.
-            fetch-depth: 0 # otherwise, there would be errors pushing refs to the destination repository.
 
       - name: Semantic Release
         id: semantic
