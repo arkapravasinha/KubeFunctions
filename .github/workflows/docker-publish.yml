@@ -44,7 +44,7 @@ jobs:
             extra_plugins: |
                 @semantic-release/exec
         env:
-            GITHUB_TOKEN: ${{ secrets.ALL }}
+            GITHUB_TOKEN: ${{ secrets.ALL_GITHUB_TOKEN }}
 
 
       # Workaround: https://github.com/docker/build-push-action/issues/461
