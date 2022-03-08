@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
         - name: kubefunctions-container
-          image: ghcr.io/arkapravasinha/kubefunctions:v1.0.3
+          image: ghcr.io/arkapravasinha/kubefunctions:v1.0.4-PullRequest0002.3
           resources:
             limits:
               memory: 128Mi
