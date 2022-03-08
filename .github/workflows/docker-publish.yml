@@ -104,7 +104,7 @@ jobs:
         uses: fjogeleit/yaml-update-action@main
         with:
           valueFile: 'deployment/deployment-dev.yml'
-          propertyPath: 'spec.template.spec.containers.image'
+          propertyPath: 'spec.template.spec.containers[0].image'
           value: ghcr.io/${{ github.repository_owner }}/kubefunctions:v${{ steps.version-git.outputs.semVer }}
           commitChange: true
           updateFile: true
