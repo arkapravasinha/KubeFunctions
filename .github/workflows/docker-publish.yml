@@ -39,8 +39,8 @@ jobs:
         with:
          fetch-depth: 0
 
-      - name: GitVersion Setup
-        uses: gitversion/setup@v0.9.7
+      - name: Install GitVersion
+        uses: gittools/actions/gitversion/setup@v0.9.7
 
       - name: Determine Version
         id: version-git
