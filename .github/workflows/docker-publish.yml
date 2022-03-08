@@ -43,7 +43,7 @@ jobs:
         uses: gitversion/setup@v0.9.7
 
       - name: Determine Version
-        id: version
+        id: version-git
         uses: gittools/actions/gitversion/execute@v0.9.7
 
 
@@ -86,7 +86,7 @@ jobs:
           push: ${{ github.event_name != 'pull_request' }}
           tags: |
             ghcr.io/${{ github.repository_owner }}/kubefunctions:latest
-            ghcr.io/${{ github.repository_owner }}/kubefunctions:v${{ steps.version.outputs.semVer }}
+            ghcr.io/${{ github.repository_owner }}/kubefunctions:v${{ steps.version-git.outputs.semVer }}
           labels: ${{ steps.meta.outputs.labels }}
           file: ./KubeFunctions/Dockerfile
       - uses: gittools/actions/gitreleasemanager/publish@v0.9.2
@@ -95,4 +95,4 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           owner: ${{ github.repository_owner }}
           repository: ${{ github.repository }}
-          tagName: ${{ steps.version.outputs.semVer }}
+          tagName: ${{ steps.version-git.outputs.semVer }}
