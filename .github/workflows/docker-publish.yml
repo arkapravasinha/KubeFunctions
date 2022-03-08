@@ -110,8 +110,6 @@ jobs:
           updateFile: true
           message: 'Update Image Version to ${{  steps.version-git.outputs.semVer }}'
           token: ${{ secrets.GITHUB_TOKEN }}
-          repository: ${{ github.repository_owner }}/${{ github.repository }}
-          branch: ${{ github.branch_name }}
 
       - name: Create Release
         id: create_release
